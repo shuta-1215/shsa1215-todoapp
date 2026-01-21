@@ -1,21 +1,22 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.container.mx-auto.px-6
+  %h2.text-3xl Sign up
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .field.text-lg.mt-4
+      = f.label :email
+      %br
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full h-10 bg-gray-100 rounded-lg  px-2 mt-1"
+    .field.text-lg.mt-4
+      = f.label :password
+      - if @minimum_password_length
+        %em
+          (#{@minimum_password_length} characters minimum)
+      %br
+      = f.password_field :password, autocomplete: "new-password", class: "w-full h-10 bg-gray-100 rounded-lg  px-2 mt-1"
+    .field.text-lg.mt-4
+      = f.label :password_confirmation
+      %br
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full h-10 bg-gray-100 rounded-lg  px-2 mt-1"
+    .actions.text-lg.w-full.h-10.bg-yellow-400.rounded-lg.flex.items-center.justify-center.mt-8.text-white
+      = f.submit "Sign up"
+  = render "devise/shared/links"
