@@ -141,6 +141,11 @@ GEM
       temple (>= 0.8.2)
       thor
       tilt
+    haml-rails (3.0.0)
+      actionpack (>= 5.1)
+      activesupport (>= 5.1)
+      haml (>= 4.0.6)
+      railties (>= 5.1)
     hamlit (4.0.0)
       temple (>= 0.8.2)
       thor
@@ -399,6 +404,7 @@ DEPENDENCIES
   dotenv-rails
   erb2haml
   faker
+  haml-rails
   hamlit
   jbuilder
   jsbundling-rails

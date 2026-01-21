@@ -59,6 +59,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'erb2haml'
+  gem 'haml-rails'
   gem "web-console"
 end
 
