@@ -1,0 +1,37 @@
+.container.mx-auto.px-6
+  %h2.text-3xl
+    Edit #{resource_name.to_s.humanize}
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .field.text-lg.mt-4
+      = f.label :email
+      %br/
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full h-10 bg-gray-100 rounded-lg  px-2 mt-1"
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      %div
+        Currently waiting confirmation for: #{resource.unconfirmed_email}
+    .field.text-lg.mt-4
+      = f.label :password
+      %i (leave blank if you don't want to change it)
+      %br/
+      = f.password_field :password, autocomplete: "new-password", class: "w-full h-10 bg-gray-100 rounded-lg  px-2 mt-1"
+      - if @minimum_password_length
+        %br/
+        %em
+          = @minimum_password_length
+          characters minimum
+    .field.text-lg.mt-4
+      = f.label :password_confirmation
+      %br/
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full h-10 bg-gray-100 rounded-lg  px-2 mt-1"
+    .fieldtext-lg.mt-4
+      = f.label :current_password
+      %i (we need your current password to confirm your changes)
+      %br/
+      = f.password_field :current_password, autocomplete: "current-password", class: "w-full h-10 bg-gray-100 rounded-lg  px-2 mt-1"
+    .actions.text-lg.w-full.h-10.bg-yellow-400.rounded-lg.flex.items-center.justify-center.mt-8.text-white
+      = f.submit "Update"
+  %h3 Cancel my account
+  %div
+    Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete}
+  = link_to "Back", :back
