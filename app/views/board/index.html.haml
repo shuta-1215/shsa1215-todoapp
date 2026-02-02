@@ -1,0 +1,17 @@
+.max-w-2xl.mx-auto.px-4
+  %h1.text-3xl.font-bold.my-8.text-gray-900 ALL Boards
+
+  .space-y-6
+    - @boards.each do |board|
+      .bg-gray-100.p-6.rounded-2xl.relative.shadow-sm.transition-shadow.hover:shadow-md
+        .flex.items-center.justify-between
+          %h2.text-xl.font-bold.text-gray-800= board.title
+          %button.ext-gray-400.hover:text-gray-600
+            %i.fas.fa-ellipsis-h ・・・
+        %p.text-gray-500.mt-2.text-sm.leading-relaxed= board.content
+        .mt-6
+          .w-8.h-8.rounded-full.overflow-hidden.border-2.border-white
+            %img{src: "https://i.pravatar.cc/150?u=#{board.user_id}", class: "w-full h-full object-cover"}
+
+    = link_to new_boards_path, class: 'flex items-center justify-center w-full py-12 mb-8 border-2 border-dashed border-gray 300 rounded-2xl text-gray-500 hover:bg-gray-50 hover:border-blue-400 hover:text-blue-500 transition-all group' do
+      %span.text-lg.font-medium + Add new board
