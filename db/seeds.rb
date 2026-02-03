@@ -9,15 +9,28 @@
 #   end
 User.destroy_all
 
-user = User.create!(
+user1 = User.create!(
   email: 'test@example.com',
   password: 'password',
   password_confirmation: 'password'
 )
 
+user2 = User.create!(
+  email: 'other@example.com',
+  password: 'password',
+  password_confirmation: 'password'
+)
+
 10.times do |i|
-  user.boards.create!(
-    title: Faker::Game.title,
+  user1.boards.create!(
+    title: "自分のボード #{i+1}",
+    content: Faker::Lorem.sentence(word_count: 10)
+  )
+end
+
+10.times do |i|
+  user2.boards.create!(
+    title: "他の人のボード #{i+1}",
     content: Faker::Lorem.sentence(word_count: 10)
   )
 end

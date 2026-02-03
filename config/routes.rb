@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   devise_for :users
 
-  root to: "board#index"
+  root to: "boards#index"
 
-  resource :boards
+  resources :boards
 end
