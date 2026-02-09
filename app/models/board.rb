@@ -14,5 +14,8 @@
 #  index_boards_on_user_id  (user_id)
 #
 class Board < ApplicationRecord
-  
+  belongs_to :user
+
+  validates :title, presence: true, length: { maximum: 255 }
+  validates :content, presence: true
 end
