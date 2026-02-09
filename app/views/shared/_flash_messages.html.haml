@@ -1,0 +1,7 @@
+- flash.each do |message_type, message|
+  - bg_color = message_type == "notice" ? "bg-green-500" : "bg-red-500"
+  .fixed.top-4.left-1_2.z-50.animate-bounce-in{ "data-controller": "flash", class: "left-1/2 -translate-x-1/2" }
+    .flex.items-center.text-white.px-6.py-3.rounded-full.shadow-2xl.cursor-pointer{ class: bg_color, "data-action": "click->flash#dismiss" }
+      %i.fas.fa-check-circle.mr-2
+      %span.font-bold= message
+      %span.ml-4.text-white.opacity-70.hover:opacity-100 ✕
