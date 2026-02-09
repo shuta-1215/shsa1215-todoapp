@@ -18,7 +18,6 @@ class BoardsController < ApplicationController
     if @board.save
       redirect_to boards_path, notice: "ボードを作成しました"
     else
-      flash.now[:error] = 'ボードの作成に失敗しました'
       render :new, status: :unprocessable_entity
     end
   end
@@ -27,6 +26,11 @@ class BoardsController < ApplicationController
   end
 
   def update
+    if @board.update(board_params)
+      redirect_to boards_path, notice: "更新しました"
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy

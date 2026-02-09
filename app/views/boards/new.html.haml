@@ -1,15 +1,4 @@
 .max-w-2xl.max-auto.px-4
   %h1.text-3xl.font-bold.my-8.text-gray-900 New Board
 
-  = form_with model: @board, local: true do |f|
-    .space-y-6
-      %div
-        = f.label :title, "Name", class: 'block text-lg font-medium text-gray-700 mb-2'
-        = f.text_field :title, class: 'w-full bg-gray-100 border-none rounded-xl p-4 focus:ring-2 focus:ring-yellow-400'
-
-      %div
-        = f.label :content, "text", class: 'block text-lg font-medium text-gray-700 mb-2'
-        = f.text_area :content, rows: 8, class: 'w-full bg-gray-100 border-none rounded-xl p-4 focus:ring-2 focus:ring-yellow-400'
-
-      .pt-10
-        = f.submit "新規作成", class: 'w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-4 rounded-xl shadow-lg transition-colors cursor-pointer'
+  = render 'form', board: @board
