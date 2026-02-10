@@ -2,8 +2,12 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_board
 
+  def show
+
+  end
+
   def new
-    @task = @board.task.build
+    @task = @board.tasks.build
   end
 
   def create
@@ -16,12 +20,21 @@ class TasksController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+  end
+
   private
   def set_board
     @board = Board.find(params[:board_id])
   end
 
   def task_params
-    prams.require(:task).permit(:title, :content, :deadline)
+    params.require(:task).permit(:title, :content, :deadline)
   end
 end

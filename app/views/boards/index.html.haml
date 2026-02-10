@@ -5,17 +5,20 @@
     - @boards.each do |board|
       .bg-gray-100.p-6.rounded-2xl.relative.shadow-sm.transition-shadow.hover:shadow-md
         .flex.items-center.justify-between
-          %h2.text-xl.font-bold.text-gray-800= board.title
+          = link_to board_path(board), class: 'flex-grow hover:opacity-70 transition-opacity z-0' do
+            %h2.text-xl.font-bold.text-gray-800= board.title
 
           - if board.user_id == current_user.id
-            .relative{ "data-controller": "dropdown" }
-              %button.text-gray-400.hover:text-gray-600.flex-shrink-0{ "data-action": "click->dropdown#toggle" }
+            .relative.z-50{ "data-controller": "dropdown" }
+              %button.text-gray-400.relative.z-50.hover:text-gray-600.flex-shrink-0{ "data-action": "click->dropdown#toggle" }
                 %i.fas.fa-ellipsis-h ・・・
 
               .absolute.right-0.mt-2.w-32.bg-white.border.rounded-lg.shadow-lg.z-10.hidden{ "data-dropdown-target": "menu" }
                 = link_to '編集', edit_board_path(board), class: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
                 = link_to '削除', board_path(board), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'block px-4 py-2 text-sm text-red-600 hover:bg-gray-100'
-        %p.text-gray-500.mt-2.text-sm.leading-relaxed= board.content
+
+        = link_to board_path(board), class: 'flex-grow hover:opacity-70 transition-opacity' do
+          %p.text-gray-500.mt-2.text-sm.leading-relaxed= board.content
         .mt-6
           .w-8.h-8.rounded-full.overflow-hidden.border-2.border-white
             %img{src: "https://i.pravatar.cc/150?u=#{board.user_id}", class: "w-full h-full object-cover"}
