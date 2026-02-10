@@ -10,6 +10,10 @@ ja:
       board:
         title: 'タイトル'
         content: '内容'
+      task:
+        title: "タイトル"
+        content: "内容"
+        deadline: "期限"
   date:
     abbr_day_names:
     - 日
