@@ -10,6 +10,10 @@
         .flex.items-center.justify-between.mt-6
           .flex.-space-x-2
             %img.w-8.h-8.rounded-full.border-2.border-white{src: "https://i.pravatar.cc/150?u=#{task.user_id}"}
+          - if task.deadline.present?
+            - expired_class = task.deadline < Time.current ? 'text-red-500 font-bold' : 'text-gray-400'
+            %div{ class: expired_class }
+              = l task.deadline
           .flex.items-center.text-gray-300.text-sm
             %span 23
             %i.far.fa-comment.ml-1
