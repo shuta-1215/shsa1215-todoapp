@@ -3,11 +3,16 @@
 
   .space-y-4
     - @board.tasks.each do |task|
-      .bg-white.p-6.rounded-2xl.relative.shadow-sm
-        %h2.text-lg.font-bold.text-gray-800.mb-2= task.title
-        %p.text-sm.text-gray-500.leading-relaxed= task.content
+      .bg-white.rounded-2xl.relative.shadow-sm.overflow-hidden
+        - if task.eyecatch.attached?
+          .w-full.h-48.overflow-hidden.p-6
+            = image_tag task.eyecatch, class: 'w-full h-full object-cover rounded-2xl'
 
-        .flex.items-center.justify-between.mt-6
+        .p-6
+          %h2.text-lg.font-bold.text-gray-800.mb-2= task.title
+          %p.text-sm.text-gray-500.leading-relaxed= task.content
+
+        .flex.items-center.justify-between.m-6
           .flex.-space-x-2
             %img.w-8.h-8.rounded-full.border-2.border-white{src: "https://i.pravatar.cc/150?u=#{task.user_id}"}
           - if task.deadline.present?
