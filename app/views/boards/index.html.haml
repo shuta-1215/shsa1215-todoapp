@@ -5,12 +5,12 @@
     - @boards.each do |board|
       .bg-gray-100.p-6.rounded-2xl.relative.shadow-sm.transition-shadow.hover:shadow-md
         .flex.items-center.justify-between
-          = link_to board_path(board), class: 'flex-grow hover:opacity-70 transition-opacity z-0' do
+          = link_to board_path(board), class: 'flex-grow hover:opacity-70 transition-opacity' do
             %h2.text-xl.font-bold.text-gray-800= board.title
 
           - if board.user_id == current_user.id
-            .relative.z-50{ "data-controller": "dropdown" }
-              %button.text-gray-400.relative.z-50.hover:text-gray-600.flex-shrink-0{ "data-action": "click->dropdown#toggle" }
+            .relative{ "data-controller": "dropdown" }
+              %button.text-gray-400.hover:text-gray-600.flex-shrink-0{ "data-action": "click->dropdown#toggle" }
                 %i.fas.fa-ellipsis-h ・・・
 
               .absolute.right-0.mt-2.w-32.bg-white.border.rounded-lg.shadow-lg.z-10.hidden{ "data-dropdown-target": "menu" }
@@ -23,5 +23,5 @@
           .w-8.h-8.rounded-full.overflow-hidden.border-2.border-white
             %img{src: "https://i.pravatar.cc/150?u=#{board.user_id}", class: "w-full h-full object-cover"}
 
-    = link_to new_board_path, class: 'flex items-center justify-center w-full py-12 mb-8 border-2 border-dashed border-gray 300 rounded-2xl text-gray-500 hover:bg-gray-50 hover:border-blue-400 hover:text-blue-500 transition-all group' do
+    = link_to new_board_path, class: 'flex items-center justify-center w-full py-12 mb-8 border-2 border-dashed border-gray-300 rounded-2xl text-gray-500 hover:bg-gray-50 hover:border-blue-400 hover:text-blue-500 transition-all group' do
       %span.text-lg.font-medium + Add new board

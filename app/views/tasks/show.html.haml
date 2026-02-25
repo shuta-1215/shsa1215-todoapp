@@ -1,0 +1,33 @@
+.max-w-2xl.mx-auto.px-6.py-8
+  .flex.item-center.justify-between.mb-6
+    %h1.text-2xl.font-bold.text-gray-900= @task.title
+    .relative{ "data-controller": "dropdown" }
+      %button.text-gray-400.hover:text-gray-600.flex-shrink-0{ "data-action": "click->dropdown#toggle" }
+        %i.fas.fa-ellipsis-h ・・・
+
+      .absolute.right-0.mt-2.w-32.bg-white.border.rounded-lg.shadow-lg.z-10.hidden{ "data-dropdown-target": "menu" }
+        = link_to '編集', edit_board_task_path(@board, @task), class: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+        = link_to '削除', board_task_path(@board, @task), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'block px-4 py-2 text-sm text-red-600 hover:bg-gray-100'
+
+  - if @task.eyecatch.attached?
+    .mb-8.rounded-2xl.overflow-hidden
+      = image_tag @task.eyecatch, class: 'w-full object-cover'
+
+  .bg-gray-50.p-6.rounded-2xl.mb-12
+    %p.text-gray-700.leading-relaxed.whitespace-pre-wrap= @task.content
+
+  .space-y-8
+    %h2.text-xl.font-bold.text-gray-900 Comment
+
+    .flex.items-start.gap-4
+      %img.w-10.h-10.rounded-full{src: "https://i.pravatar.cc/150?u=1"}
+      .text-sm.text-gray-600.leading-relaxed
+        Successful businesses know the importance of building and maintaining good working...
+
+    .flex.items-start.gap-4
+      %img.w-10.h-10.rounded-full{src: "https://i.pravatar.cc/150?u=2"}
+      .text-sm.text-gray-600.leading-relaxed
+        Successful businesses know the importance of building and maintaining good working...
+
+    .mt-10.p-6.border-2.border-dashed.border-gray-300.rounded-2xl.text-center.text-gray-400.cursor-pointer.hover:bg-whit.hover:border-blue-400.hover:text-blue-500
+      + Add new comment

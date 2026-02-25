@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :set_board
 
   def show
-
+    @task = @board.tasks.find(params[:id])
   end
 
   def new
