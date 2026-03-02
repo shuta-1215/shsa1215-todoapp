@@ -17,7 +17,9 @@
   %body
     = render 'shared/flash_messages'
     %header.flex.items-center.justify-between.px-6.py-4.border-b
-      %span.text-xl.font-semibold.text-gray-700 Boards
+      = link_to boards_path, class: 'text-xl font-semibold text-gray-700' do
+        %i.fas.fa-chevron-left.mr-2
+        Boards
       .w-10.h-10.rounded-full.overflow-hidden
         %img{src: "https://i.pravatar.cc/150?u=my-account", class: "w-full h-full object-cover"}
     = yield
