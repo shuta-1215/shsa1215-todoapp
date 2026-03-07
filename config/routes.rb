@@ -17,5 +17,7 @@ Rails.application.routes.draw do
 
   resources :boards do
     resources :tasks, only: [:show, :new, :create, :edit, :update, :destroy]
+    resources :tasks do
+      resources :comment, only: [:new, :create]
   end
 end
