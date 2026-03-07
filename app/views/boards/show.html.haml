@@ -21,8 +21,11 @@
               %div{ class: expired_class }
                 = l task.deadline
             .flex.items-center.text-gray-300.text-sm
-              %span 23
-              %i.far.fa-comment.ml-1
+              - if task.comments.count > 0
+                %span= task.comments.count
+                %i.fas.fa-comment.ml-1.text-blue-300
+              - else
+                %i.fas.fa.comment.ml-1
 
     = link_to new_board_task_path(@board), class: 'flex items-center justify-center w-full py-12 mb-8 border-2 border-dashed border-gray-300 rounded-2xl text-gray-500 hover:bg-gray-50 hover:border-blue-400 hover:text-blue-500 transition-all group' do
       %span.text-lg.font-medium + Add new task
