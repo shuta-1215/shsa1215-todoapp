@@ -8,7 +8,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @tasks = @board.tasks
+    @tasks = @board.tasks.includes(:comments)
   end
 
   def new
