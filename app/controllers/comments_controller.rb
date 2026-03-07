@@ -1,13 +1,12 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_task
 
   def new
-    @task = Task.find(params[:task_id])
     @comment = @task.comments.build
   end
 
   def create
-    @task = Task.find(params[:task_id])
     @comment = @task.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
@@ -18,18 +17,16 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @task = Task.find(params[:task_id])
-    @comment = @task.comments.find(params[:id])
-
-    if @comment.user_id == current_user.id
+    @comment = current_user.comments.find(params[:id])
       @comment.destroy
       redirect_to board_task_path(@task.board, @task), notice: "コメントを削除しました", status: :see_other
-    else
-      redirect_to board_task_path(@task.board, @task), alert: "権限がありません", status: :see_other
-    end
   end
 
   private
+  def set_task
+    @task = Task.find(params[:task_id])
+  end
+
   def comment_params
     params.require(:comment).permit(:content)
   end
