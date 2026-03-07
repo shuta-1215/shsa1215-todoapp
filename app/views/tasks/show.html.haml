@@ -19,15 +19,21 @@
   .space-y-8
     %h2.text-xl.font-bold.text-gray-900 Comment
 
-    .flex.items-start.gap-4
-      %img.w-10.h-10.rounded-full{src: "https://i.pravatar.cc/150?u=1"}
-      .text-sm.text-gray-600.leading-relaxed
-        Successful businesses know the importance of building and maintaining good working...
+    - @comments.each do |comment|
+      .flex.items-start.gap-4
+        %img.w-10.h-10.rounded-full{src: "https://i.pravatar.cc/150?u=#{comment.user_id}"}
+        .flex-grow
+          .bg-gray-100.p-4.rounded-2xl.text-sm.text-gray-700.leading-relaxed
+            = comment.content
 
-    .flex.items-start.gap-4
-      %img.w-10.h-10.rounded-full{src: "https://i.pravatar.cc/150?u=2"}
-      .text-sm.text-gray-600.leading-relaxed
-        Successful businesses know the importance of building and maintaining good working...
+          .flex.items-center.gap-3.mt-2.ml-2
+            %span.text-xs.text-gray-400
+              = comment.created_at.strftime('%Y/%m/%d %H:%M')
+
+            - if comment.user_id == current_user.id
+              = link_to board_task_comment_path(@board, @task, comment), data:{ turbo_method: :delete, turbo_confirm: 'コメントを削除しますか？' }, class: 'text-xs text-red-400' do
+                %i.fas.fa-trash-alt
+                削除
 
     = link_to new_board_task_comment_path(@board, @task), class: 'flex items-center justify-center w-full py-12 mb-8 border-2 border-dashed border-gray-300 rounded-2xl text-gray-500 hover:bg-gray-50 hover:border-blue-400 hover:text-blue-500 transition-all group' do
       + Add new comment
