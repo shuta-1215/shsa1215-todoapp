@@ -11,7 +11,7 @@
           - if board.user_id == current_user.id
             .relative{ "data-controller": "dropdown" }
               %button.text-gray-400.hover:text-gray-600.flex-shrink-0{ "data-action": "click->dropdown#toggle" }
-                %i.fas.fa-ellipsis-h ・・・
+                %i.fas.fa-ellipsis-h
 
               .absolute.right-0.mt-2.w-32.bg-white.border.rounded-lg.shadow-lg.z-10.hidden{ "data-dropdown-target": "menu" }
                 = link_to '編集', edit_board_path(board), class: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
