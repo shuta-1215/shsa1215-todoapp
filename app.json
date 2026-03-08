@@ -1,0 +1,16 @@
+{
+  "name": "todo app",
+  "description": "This is todoapp",
+  "keywords": [],
+  "website": "",
+  "repository": "https://github.com/shuta-1215/shsa1215-todoapp",
+  "env": {},
+  "addons": [
+    "heroku-postgresql:essential-0"
+  ],
+  "buildpacks": [{
+    "url": "heroku/nodejs"
+  }, {
+    "url": "heroku/ruby"
+  }]
+}
