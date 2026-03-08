@@ -16,6 +16,10 @@ module Todoapp
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
+    if ['development', 'test'].include? ENV['RAILS_ENV']
+       Dotenv::Railtie.load
+    end
+
     config.i18n.default_locale = :ja
 
     # Configuration for the application, engines, and railties goes here.
